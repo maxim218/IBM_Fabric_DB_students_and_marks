@@ -1,4 +1,4 @@
-# IBM Hyperledger Fabric
+# IBM Hyperledger Fabric (version 1.1)
 
 ## Реализация базы данных: ученики и оценки
 
