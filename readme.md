@@ -10,11 +10,17 @@
 
 ### Инструкция
 
-Останавливаем работу контейнеров: sudo docker stop $(sudo docker ps -aq)
+Останавливаем работу контейнеров: 
 
-Удаляем старые контейнеры: sudo docker rm $(sudo docker ps -aq)
+sudo docker stop $(sudo docker ps -aq)
 
-Удаляем старые образы: sudo docker rmi $(sudo docker images dev-* -q)
+Удаляем старые контейнеры: 
+
+sudo docker rm $(sudo docker ps -aq)
+
+Удаляем старые образы: 
+
+sudo docker rmi $(sudo docker images dev-* -q)
 
 
 
