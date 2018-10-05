@@ -44,6 +44,16 @@ node registerUser.js
 
 python MyScript.py
 
+### При обновлении чейнкода
+
+> Запускаем скрипт
+
+sudo ./upgrade.sh node
+
+
+
+
+
 
 
 
