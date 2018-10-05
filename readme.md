@@ -24,6 +24,30 @@ sudo docker rm $(sudo docker ps -aq)
 
 sudo docker rmi $(sudo docker images dev-* -q)
 
+> Удаляем сети
+
+sudo docker network prune
+
+> Запускаем приложение
+
+sudo ./startFabric.sh node
+
+> Создаём администратора
+
+node enrollAdmin.js
+
+> Создаём обычного пользователя
+
+node registerUser.js
+
+> Запускаем скрипт для взаимодействия с приложением
+
+python MyScript.py
+
+
+
+
+
 
 
 
