@@ -1,4 +1,4 @@
-# IBM Hyperledger Fabric (version 1.1)
+# IBM Hyperledger Fabric (version 1 and version 2)
 
 ## Реализация базы данных: ученики и оценки
 
@@ -40,9 +40,13 @@ node enrollAdmin.js
 
 node registerUser.js
 
-> Запускаем скрипт для взаимодействия с приложением
+> Запускаем скрипт для взаимодействия с приложением (для version 1)
 
 python MyScript.py
+
+> Запускаем сервер на NodeJS (для version 2)
+
+node index.js
 
 ### При обновлении чейнкода
 
