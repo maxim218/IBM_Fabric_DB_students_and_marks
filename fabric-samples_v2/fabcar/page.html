@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Тестирование</title>
+	<style>
+		body {
+			font-family: Geneva, Arial, Helvetica, sans-serif;
+			margin: 50px;
+		}
+		
+		td {
+			padding: 5px;
+		}
+		
+		#box1 {
+			padding: 15px;
+			background: #CCCCCC;
+		}
+		
+		#box2 {
+			padding: 15px;
+			background: #CCCCCC;
+		}
+		
+		.field {
+			margin-left: 15px;
+			padding: 5px;
+			font-family: Geneva, Arial, Helvetica, sans-serif;
+			width: 300px;
+		}
+		
+		button {
+			font-family: Geneva, Arial, Helvetica, sans-serif;
+			padding: 7px;
+			width: 270px;
+		}
+	</style>
+</head>
+<body>
+	
+<script>
+	function sendAjax(url, callback) {
+		const r = new XMLHttpRequest();
+		r.open("GET", url);
+		r.setRequestHeader("Content-Type","text/plain;charset=UTF-8");
+		r.send(null);
+		r.onreadystatechange = function() {
+			if(r.readyState === 4 && r.status === 200) {
+				callback(r.responseText + "");
+			}
+		}
+	}
+	
+	function addStudent() {
+		const id = document.getElementById('t1').value;
+		const name = document.getElementById('t2').value;
+		sendAjax('?operation=addStudent&id=' + id + "&name=" + name, function(s) {
+			alert(s);
+		});
+	}
+	
+	function addMark() {
+		const id = document.getElementById('q1').value;
+		const mark = document.getElementById('q2').value;
+		sendAjax('?operation=addMark&id=' + id + "&mark=" + mark, function(s) {
+			alert(s);
+		});
+	}
+	
+	function getMarks() {
+		const box = document.getElementById("box2");
+		sendAjax('?operation=getMarks', function(s) {
+			const arr = JSON.parse(s);
+			let ans = "<table border = '2px solid black'>";
+			ans = ans + "<tr><td>" + "<b>ID студента</b>" + "</td><td>" + "<b>Имя студента</b>" + "</td><td>" + "<b>Оценка</b>" + "</td></tr>";
+			for(let i = 0; i < arr.length; i++) {
+				const obj = arr[i];
+				ans = ans + "<tr><td>" + obj.studentId + "</td><td>" + obj.studentSurname + "</td><td>" + obj.markValue + "</td></tr>";
+			}
+			ans += "</table>";
+			box.innerHTML = ans;
+		});
+	}
+	
+	function printStudents() {
+		const box = document.getElementById("box1");
+		sendAjax('?operation=getStudents', function(s) {
+			const arr = JSON.parse(s);
+			let ans = "<table border = '2px solid black'>";
+			ans = ans + "<tr><td>" + "<b>ID студента</b>" + "</td><td>" + "<b>Имя студента</b>" + "</td></tr>";
+			for(let i = 0; i < arr.length; i++) {
+				ans = ans + "<tr><td>" + arr[i].studentId + "</td><td>" + arr[i].studentSurname + "</td></tr>";
+			}
+			ans += "</table>";
+			box.innerHTML = ans;
+		});
+	}
+</script>
+
+<h1>Тестирование</h1>
+<hr>
+<br>
+
+<button onclick = "printStudents();">Получить список студентов</button>
+<br>
+<br>
+<div id = "box1"></div>
+
+<br>
+<br>
+ID студента
+<br>
+<input type = "text" spellcheck = 'false' autocomplete = 'off' id = "t1" class = "field">
+<br>
+<br>
+Имя студента
+<br>
+<input type = "text" spellcheck = 'false' autocomplete = 'off' id = "t2" class = "field">
+<br>
+<br>
+<button onclick = "addStudent();">Добавить студента</button>
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+<button onclick = "getMarks();">Получить список оценок</button>
+<br>
+<br>
+<div id = "box2"></div>
+
+<br>
+<br>
+ID студента
+<br>
+<input type = "text" spellcheck = 'false' autocomplete = 'off' id = "q1" class = "field">
+<br>
+<br>
+Оценка
+<br>
+<input type = "text" spellcheck = 'false' autocomplete = 'off' id = "q2" class = "field">
+<br>
+<br>
+<button onclick = "addMark();">Добавить оценку</button>
+
+<br>
+<br>
+
+</body>
+</html>
