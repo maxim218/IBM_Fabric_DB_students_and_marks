@@ -6,64 +6,50 @@
 
 ### Полезная ссылка
 
-> Ссылка: 
+Ссылка: 
 
 https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html
 
 ### Инструкция
 
-> Останавливаем работу контейнеров: 
+Останавливаем работу контейнеров: 
 
-sudo docker stop $(sudo docker ps -aq)
+`sudo docker stop $(sudo docker ps -aq)`
 
-> Удаляем старые контейнеры: 
+Удаляем старые контейнеры: 
 
-sudo docker rm $(sudo docker ps -aq)
+`sudo docker rm $(sudo docker ps -aq)`
 
-> Удаляем старые образы: 
+Удаляем старые образы: 
 
-sudo docker rmi $(sudo docker images dev-* -q)
+`sudo docker rmi $(sudo docker images dev-* -q)`
 
-> Удаляем сети
+Удаляем сети
 
-sudo docker network prune
+`sudo docker network prune`
 
-> Запускаем приложение
+Запускаем приложение
 
-sudo ./startFabric.sh node
+`sudo ./startFabric.sh node`
 
-> Создаём администратора
+Создаём администратора
 
-node enrollAdmin.js
+`node enrollAdmin.js`
 
-> Создаём обычного пользователя
+Создаём обычного пользователя
 
-node registerUser.js
+`node registerUser.js`
 
-> Запускаем скрипт для взаимодействия с приложением (для version 1)
+Запускаем скрипт для взаимодействия с приложением (для version 1)
 
-python MyScript.py
+`python MyScript.py`
 
-> Запускаем сервер на NodeJS (для version 2)
+Запускаем сервер на NodeJS (для version 2)
 
-node index.js
+`node index.js`
 
 ### При обновлении чейнкода
 
-> Запускаем скрипт
+Запускаем скрипт
 
-sudo ./upgrade.sh node
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+`sudo ./upgrade.sh node`
